@@ -3,6 +3,7 @@ Contains the serial as well as the parallel implementation of Strassen's algorit
 Please do uncomment and redirect to a file if you would like to view the product. 
 
 Details:
+
 1> generateMatrix.c: Code for generating inputs for the programs. 
 
 2> strassens.c: Serial code for matrix multiplication using Strassen's algorithm.
@@ -12,10 +13,12 @@ Details:
 4> makefile: Used to generate the executables. 
 
 System Specifications: 
+
 Processor -> Intel(R) Core(TM) i7-4710MQ CPU @ 2.50GHz
 OS -> Ubuntu 16.04
 
 Installation:
+
 1> First generate the inputs using generateMatrix.c. 128 is the size of the square matrix used as an example here. 
   Example:
   $ gcc -c generateMatrix.c
