@@ -15,6 +15,7 @@ Details:
 System Specifications: 
 
 Processor -> Intel(R) Core(TM) i7-4710MQ CPU @ 2.50GHz
+
 OS -> Ubuntu 16.04
 
 Installation:
