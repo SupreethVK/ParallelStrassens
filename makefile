@@ -1,4 +1,4 @@
-all: parastrasens.out strassens.out
+all: parastrassens.out strassens.out
 
 parastrassens.out: parallelstrassens.c
 	gcc -o parastrassens.out parallelstrassens.c -pthread
