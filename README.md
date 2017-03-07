@@ -28,6 +28,6 @@ Installation:
   128
 
 2> Generate the executables using the makefile and run the executable as:
-  $./strassen < 128.txt > outputfile.txt
-  $./parastrassen < 128.txt > outputfile.txt
+  $./strassen.out < 128.txt > outputfile.txt
+  $./parastrassen.out < 128.txt > outputfile.txt
   
