@@ -3,6 +3,7 @@
 #include<stdlib.h>
 #include<time.h>
 
+//function to calculate the execution time 
 double calc_time(struct timespec start, struct timespec stop) 
 {
 	double t;
