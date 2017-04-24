@@ -12,6 +12,7 @@ double calc_time(struct timespec start, struct timespec stop)
 	return t;
 }
 
+//function to free allocated memory
 void freeThat(float ** a, float ** b, float ** c, int n)
 {
 	for(int i=1; i<=n; ++i)
@@ -24,7 +25,8 @@ void freeThat(float ** a, float ** b, float ** c, int n)
 	free(b);
 	free(c);
 }
-	
+
+//function to allocate memory to the matrix types
 float ** initMatrix(int n)
 {
 	float ** m = (float **) calloc(n, sizeof(float *));
@@ -35,6 +37,7 @@ float ** initMatrix(int n)
 	return m;
 }
 
+//function to initialize the matrices with values from the input
 float ** initMatrixV(int n)
 {
 	float ** m = (float **) calloc(n, sizeof(float *));
@@ -52,6 +55,8 @@ float ** initMatrixV(int n)
 	return m;
 }
 
+
+//function to add two matrices and return the result
 float ** addMatrix(float ** a, float ** b, int n)
 {
 	float ** c = initMatrix(n);
@@ -65,6 +70,7 @@ float ** addMatrix(float ** a, float ** b, int n)
 	return c;
 }
 
+//function to subtract a matrix from another and return the result
 float ** subMatrix(float ** a, float ** b, int n)
 {
 	float ** c = initMatrix(n);
@@ -77,16 +83,21 @@ float ** subMatrix(float ** a, float ** b, int n)
 	}
 	return c;
 }	
+
+//Recursive multiplication implemented by following the strassen's algorithm
 float ** multiply(float ** a, float ** b, int n)
 {
 	int N = n/2;
 	float ** c = initMatrix(n);
+	
+	//Base condition
 	if(n==1)
 	{
 		c[1][1] = a[1][1] * b[1][1];
 	}
 	else
 	{
+		//Allocate memory to the submatrices
 		float ** A11 = initMatrix(N);
 		float ** A12 = initMatrix(N);
 		float ** A21 = initMatrix(N);
@@ -96,6 +107,7 @@ float ** multiply(float ** a, float ** b, int n)
 		float ** B21 = initMatrix(N);
 		float ** B22 = initMatrix(N);
 		float ** Ctemp;
+		//Form the submatrices
 		for(int i=1; i<=(N); ++i)
 		{
 			for(int j=1; j<=(N); ++j)
@@ -149,6 +161,7 @@ float ** multiply(float ** a, float ** b, int n)
 		float ** S9 = subMatrix(A11, A21, N);
 		float ** S10 = addMatrix(B11, B12, N);
 		
+		//Compute the 7 multiplications specified by Strassen's
 		float ** P1 = multiply(A11, S1, N);
 		float ** P2 = multiply(S2, B22, N);
 		float ** P3 = multiply(S3, B11, N);
@@ -157,6 +170,7 @@ float ** multiply(float ** a, float ** b, int n)
 		float ** P6 = multiply(S7, S8, N);
 		float ** P7 = multiply(S9, S10, N);
 		
+		//the resultant matrices are then coupled together for further operations as specified by the algorithm
 		float ** t1;
 		t1 = addMatrix(P5, P4, N);
 		float ** t2;
